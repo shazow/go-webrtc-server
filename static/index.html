@@ -1,13 +1,23 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <script src="connect.js"></script>
-    <script type="text/javascript">
-        const pc = fromWebSocket("ws://localhost:3000/connect");
-    </script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
 
 <body>
-    Open the console.
+
+Open the console.
+
+<script src="connect.js"></script>
+<script type="text/javascript">
+    let pc, channel;
+    pc = fromWebSocket("ws://localhost:3000/connect", function(ch) {
+        console.log("channel ready:", ch);
+        channel = ch;
+        ch.send("hello, webrtc.");
+    });
+</script>
+
 </body>
 
 </html>

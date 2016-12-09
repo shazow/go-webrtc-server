@@ -46,7 +46,7 @@ func (upgrader *socketUpgrader) Handler(w http.ResponseWriter, r *http.Request) 
 		case websocket.CloseMessage:
 			return
 		case websocket.TextMessage:
-			fmt.Println("Signal received from client?")
+			fmt.Println("Signal received from client:", string(msg))
 			err = peer.Connect(string(msg))
 		default:
 		}

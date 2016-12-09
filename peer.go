@@ -100,7 +100,7 @@ func (p *peer) Connect(signal string) error {
 	var parsed map[string]interface{}
 	err := json.Unmarshal([]byte(signal), &parsed)
 	if nil != err {
-		return err
+		return fmt.Errorf("failed JSON parse: %s", err)
 	}
 
 	if nil != parsed["sdp"] {
